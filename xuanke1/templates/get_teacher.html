@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>教师管理</title>
+{% endblock %}
+{% block styles %}
+    <style>
+        h2{
+            color:red;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <p><a href="add_teacher.html">添加</a> </p>
+    <table  border="1" align="center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>老师名称</th>
+            <th>操   作</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for row in teacher_list %}
+                <tr>
+                <td>
+                    {{ row.id }}
+                </td>
+                <td>
+                    {{ row.name }}
+                </td>
+                <td>
+                    <a href="delete_teacher.html?nid={{ row.id }}">删除</a>
+                    |<a href="edit_teacher.html?nid={{ row.id }}">修改</a>
+                </td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}

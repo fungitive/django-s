@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{% block title %}
+    <title>Title</title>
+{% endblock %}
+</head>
+{% block styles %}
+{% endblock %}
+<style>
+    body{
+        text-align: center;
+        margin: auto;
+    }
+    .nav{
+        width: 100%;
+        height: 50px;
+        background-color: burlywood;
+        text-align: center;
+    }
+    .middle{
+        width: 80%;
+        margin: auto;
+    }
+    .left{
+        float: left;
+        width: 20%;
+        background-color: darkorange;
+        min-height: 600px;
+
+    }
+    .left li{
+        height: 30px;
+        font-size: 20px;
+        margin: 10px;
+        list-style-type: none;
+    }
+    .right{
+        float: left;
+        width: 80%;
+        background-color: blanchedalmond;
+        min-height: 600px;
+    }
+    .content{
+        margin: 10px;
+        text-align: center;
+        position: relative;
+    }
+    .footer{
+        background-color: burlywood;
+        width: 80%;
+        height: 60px;
+        margin-top: 600px;
+        margin-left: 10%;
+        text-align: center;
+    }
+    .footer h3{
+        font-size: 20px;
+        padding-top: 15px;
+    }
+
+</style>
+<body>
+<div  class="nav">
+    <h1>学生管理系统</h1>
+</div>
+<div class="middle">
+<div class="left">
+    <li><a href="/index">首页</a> </li>
+    <li><a href="/teacher.html" >老师管理</a></li>
+    <li><a href="/student.html" >学生管理</a></li>
+    <li><a href="/grade.html" >班级管理</a></li>
+    <li><a href="/course.html" >课程管理</a></li>
+</div>
+<div class="right" >
+    <div class="content">
+        {% block content %}
+            <p>内容</p>
+        {% endblock %}
+    </div>
+</div>
+</div>
+<div class="footer ">
+    <h3>版权所有   开发者：菲宇</h3>
+</div>
+</body>
+</html>

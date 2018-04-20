@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="edit_student.html?nid={{ obj.id }}" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                姓   名：<input type="text" name="name" value="{{ obj.name }}"/>
+            </th>
+        <tr>
+            <td>性别
+                  {% if obj.gender %}
+                        男：<input id="man" type="radio" checked="checked" name="gender" value="1"/>
+                        女：<input id="woman" type="radio"  name="gender" value="0"/>
+                    {% else %}
+                        男：<input id="man" type="radio" name="gender" value="1"/>
+                        女：<input id="woman" type="radio"  name="gender" value="0" checked="checked" />
+                    {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                年   龄：<input type="number" name="age" value="{{ obj.age }}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                选课时间：<input type="date" name="birth" value="{{ obj.birth }}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>班   级：<select name="class_id">
+                {% for row in grade_list %}
+                    {% if row.id == obj.grade_id %}
+                    <option value="{{ row.id }}" selected="selected">{{ row.grade }}</option>
+                    {% else %}
+                         <option value="{{ row.id }}">{{ row.grade }}</option>
+                    {% endif %}
+                {% endfor %}
+                    </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="提交"/>
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

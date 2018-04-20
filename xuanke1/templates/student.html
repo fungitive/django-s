@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>学生管理</title>
+{% endblock %}
+{% block styles %}
+    <style>
+        h2{
+            color:red;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h2>学生</h2>
+    <p><a href="add_student.html">添加</a> </p>
+    <table  border="1" align="center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>学生姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>选课时间</th>
+            <th>班级</th>
+            <th>操   作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%   csrf_token %}
+            {% for row in student_list %}
+                <tr>
+                <td>
+                    {{ row.id }}
+                </td>
+                <td>
+                    {{ row.name }}
+                </td>
+                <td>
+                    {{ row.age }}
+                </td>
+                <td>
+                    {{ row.gender }}
+                </td>
+                <td>
+                    {{ row.birth}}
+                </td>
+                <td>
+                    {{ row.grade }}
+                </td>
+                <td>
+                    <a href="delete_student.html?nid={{ row.id }}">删除</a>
+                    |<a href="edit_student.html?nid={{ row.id }}">修改</a>
+                </td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include "info.html" %}
+{% endblock %}
